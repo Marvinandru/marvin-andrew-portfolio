@@ -1,35 +1,40 @@
 /* ==========================================================================
-   Marvin Andrew O. — Moonex Freelancer Portfolio Stylesheet (White Light Theme)
-   Clean, Modern, Ultra-Readable, High-Contrast & Executive-Grade
+   Marvin Andrew O. — Executive Portfolio Stylesheet
+   Theme: Liquid Glass Navigation, Clean White Editorial Layout,
+          Top-Tier Readability & Rectangular Career List Cards
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Design Tokens & Clean Light Palette
+   Design Tokens & Clean Palette
    -------------------------------------------------------------------------- */
 :root {
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Grotesk', monospace;
 
-  /* Moonex White / Clean Palette */
+  /* Clean White Palette */
   --bg-body: #ffffff;
   --bg-surface: #f8fafc;
   --bg-card: #ffffff;
   --bg-card-subtle: #f1f5f9;
   --bg-dark-accent: #0f172a;
 
+  /* Liquid Glass Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.76);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-border-bottom: rgba(226, 232, 240, 0.7);
+  --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.05);
+
   /* High Contrast Typography */
   --text-dark: #0f172a;
   --text-primary: #1e293b;
   --text-secondary: #475569;
   --text-muted: #64748b;
-  --text-light: #f8fafc;
+  --text-white: #ffffff;
 
-  /* Signature Moonex Lime Accents */
+  /* Accents */
   --lime: #c6f64d;
   --lime-dark: #65a30d;
-  --lime-subtle: rgba(198, 246, 77, 0.2);
-  --lime-glow: rgba(198, 246, 77, 0.4);
+  --accent-emerald: #10b981;
 
   /* Borders & Dividers */
   --border-light: #e2e8f0;
@@ -37,24 +42,27 @@
   --border-dark: #0f172a;
 
   /* Shadows */
-  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.07);
-  --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.1);
+  --shadow-xs: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 28px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.09);
 
   /* Radius */
-  --radius-sm: 8px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 20px;
+  --radius-xl: 26px;
   --radius-full: 9999px;
 
   /* Transitions */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.2s var(--ease);
-  --transition-normal: 0.35s var(--ease);
+  --transition-fast: 0.18s var(--ease);
+  --transition-normal: 0.32s var(--ease);
 }
 
 /* --------------------------------------------------------------------------
-   Global Reset & Reader-Friendly Base
+   Global Reset & Reader-Friendly Typography
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -67,7 +75,7 @@ html {
   font-size: 16px;
 }
 
-body.moonex-light {
+body.top-tier-light {
   background-color: var(--bg-body);
   color: var(--text-primary);
   font-family: var(--font-main);
@@ -126,18 +134,18 @@ code {
   gap: 8px;
   color: var(--text-dark);
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 16px;
   background: var(--lime);
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
 }
 
 .eyebrow-symbol {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .section-header-row {
@@ -146,16 +154,16 @@ code {
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 52px;
 }
 
 .section-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-family: var(--font-main);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   color: var(--text-dark);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   max-width: 760px;
 }
 
@@ -167,101 +175,7 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   Buttons & Interactive Elements (Moonex Clean Style)
-   -------------------------------------------------------------------------- */
-.btn-moonex-dark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: var(--text-dark);
-  color: #ffffff;
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.92rem;
-  padding: 12px 24px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--text-dark);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.btn-moonex-dark:hover {
-  background-color: var(--lime);
-  border-color: var(--lime);
-  color: var(--text-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.15);
-}
-
-.btn-moonex-accent {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: var(--text-dark);
-  color: #ffffff;
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.96rem;
-  padding: 14px 30px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-moonex-accent:hover {
-  background-color: var(--lime);
-  color: var(--text-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.18);
-}
-
-.btn-moonex-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: transparent;
-  color: var(--text-dark);
-  border: 1.5px solid var(--border-medium);
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.96rem;
-  padding: 14px 28px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.btn-moonex-outline:hover {
-  border-color: var(--text-dark);
-  background-color: var(--bg-surface);
-  transform: translateY(-2px);
-}
-
-.btn-arrow {
-  display: inline-block;
-  font-size: 1.15rem;
-  transition: transform var(--transition-fast);
-}
-
-.btn-moonex-dark:hover .btn-arrow,
-.btn-moonex-accent:hover .btn-arrow {
-  transform: translate(2px, -2px);
-}
-
-.btn-full {
-  width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   Header / Navigation Bar (Crisp White Frosted)
+   Liquid Glass Navigation Bar
    -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
@@ -269,11 +183,12 @@ code {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-light);
-  padding: 18px 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--glass-border-bottom);
+  box-shadow: var(--glass-shadow);
+  padding: 16px 0;
   transition: all var(--transition-normal);
 }
 
@@ -290,10 +205,10 @@ code {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
   color: var(--text-dark);
 }
 
@@ -302,26 +217,43 @@ code {
   font-size: 1.1rem;
 }
 
-.lime-dot {
+.brand-dot {
   color: var(--lime-dark);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-item {
   font-family: var(--font-main);
-  font-size: 0.94rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--text-dark);
+  transition: width var(--transition-fast);
 }
 
 .nav-item:hover {
   color: var(--text-dark);
+}
+
+.nav-item:hover::after {
+  width: 100%;
 }
 
 .header-actions {
@@ -331,15 +263,16 @@ code {
 }
 
 .header-social-btn {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-full);
-  background: var(--bg-surface);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--border-light);
   color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-xs);
   transition: all var(--transition-fast);
 }
 
@@ -348,6 +281,76 @@ code {
   border-color: var(--text-dark);
   color: #ffffff;
   transform: translateY(-2px);
+}
+
+.btn-executive-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--text-dark);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--text-dark);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-executive-dark:hover {
+  background-color: var(--lime);
+  border-color: var(--lime);
+  color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.btn-executive-dark.btn-lg {
+  padding: 14px 30px;
+  font-size: 0.95rem;
+}
+
+.btn-executive-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-medium);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-executive-outline:hover {
+  border-color: var(--text-dark);
+  background-color: var(--bg-surface);
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  display: inline-block;
+  font-size: 1.1rem;
+  transition: transform var(--transition-fast);
+}
+
+.btn-executive-dark:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+.btn-full {
+  width: 100%;
 }
 
 .mobile-menu-btn {
@@ -362,14 +365,14 @@ code {
 
 .mobile-menu-btn span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
   background-color: var(--text-dark);
   transition: all var(--transition-fast);
 }
 
 /* --------------------------------------------------------------------------
-   Hero Section (White Moonex Template)
+   Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
   padding: 165px 0 95px;
@@ -387,21 +390,21 @@ code {
   align-items: center;
 }
 
-.hero-badge {
+.hero-status-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 16px;
+  padding: 7px 16px;
   border-radius: var(--radius-full);
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   color: var(--text-dark);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   margin-bottom: 24px;
 }
 
-.badge-dot {
+.status-pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -410,8 +413,8 @@ code {
 }
 
 .hero-headline {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  font-family: var(--font-main);
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
@@ -419,25 +422,19 @@ code {
   margin-bottom: 24px;
 }
 
-.highlight-dark {
+.hero-highlight {
   color: var(--text-dark);
 }
 
-.text-outline {
-  -webkit-text-stroke: 1.5px var(--text-dark);
-  color: transparent;
-  transition: all var(--transition-normal);
-}
-
-.text-outline:hover {
-  color: var(--lime);
-  -webkit-text-stroke: 1.5px var(--text-dark);
+.hero-subheading-line {
+  color: var(--text-secondary);
+  font-weight: 700;
 }
 
 .hero-subtext {
   font-size: 1.12rem;
   color: var(--text-secondary);
-  line-height: 1.75;
+  line-height: 1.8;
   margin-bottom: 34px;
   max-width: 620px;
 }
@@ -451,10 +448,10 @@ code {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
 }
 
-.hero-social-pills {
+.hero-social-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -541,8 +538,8 @@ code {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border-light);
   padding: 8px 14px;
   border-radius: var(--radius-md);
@@ -552,7 +549,7 @@ code {
 }
 
 .badge-num {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--text-dark);
@@ -596,15 +593,16 @@ code {
 }
 
 .caption-name {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
 }
 
 .caption-title {
   font-size: 0.84rem;
   color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .caption-location {
@@ -614,7 +612,7 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   Infinite Marquee Ticker (Moonex Contrast Ribbon)
+   Infinite Marquee Ticker
    -------------------------------------------------------------------------- */
 .marquee-ticker-container {
   width: 100%;
@@ -634,8 +632,8 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  font-family: var(--font-heading);
-  font-size: 0.96rem;
+  font-family: var(--font-main);
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   padding: 0 22px;
@@ -687,7 +685,7 @@ code {
 }
 
 .brand-item {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 0.94rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -700,7 +698,7 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   About Section & Moonex Spec Card (White Theme)
+   About Section & Spec Card
    -------------------------------------------------------------------------- */
 .about-grid {
   display: grid;
@@ -741,7 +739,7 @@ code {
 }
 
 .stat-digit {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.85rem;
   font-weight: 800;
   color: var(--text-dark);
@@ -757,7 +755,6 @@ code {
   font-weight: 700;
 }
 
-/* Moonex Spec Card (Right Side) */
 .about-spec-card {
   background: #ffffff;
   border: 1px solid var(--border-light);
@@ -767,9 +764,9 @@ code {
 }
 
 .spec-card-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 24px;
   padding-bottom: 16px;
@@ -817,7 +814,7 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   Services Accordion / Numbered Rows (White Theme)
+   Services Accordion / Numbered Rows
    -------------------------------------------------------------------------- */
 .services-accordion {
   display: flex;
@@ -845,7 +842,7 @@ code {
 }
 
 .service-num {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--text-muted);
@@ -857,9 +854,9 @@ code {
 }
 
 .service-name {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-family: var(--font-main);
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 10px;
   transition: color var(--transition-fast);
@@ -915,7 +912,7 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   Startups & Ventures Section (Spedire, Mahale & Trovami)
+   Startups & Ventures Cards (Spedire, Mahale & Trovami)
    -------------------------------------------------------------------------- */
 .startups-grid {
   display: grid;
@@ -950,7 +947,7 @@ code {
 .badge-accent {
   background: var(--text-dark);
   color: #ffffff;
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 0.72rem;
   font-weight: 800;
   padding: 4px 10px;
@@ -976,8 +973,8 @@ code {
 }
 
 .startup-name {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-family: var(--font-main);
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--text-dark);
 }
@@ -1007,7 +1004,7 @@ code {
   color: var(--text-dark);
   font-weight: 700;
   margin-bottom: 16px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .startup-summary {
@@ -1083,100 +1080,181 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   Resume Section (Split Columns)
+   RECTANGULAR LIST CARDS (CAREER EXPERIENCE)
+   Streamlined, Highly Legible, Linear/Horizontal Architecture
    -------------------------------------------------------------------------- */
-.resume-split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-
-.column-header {
+.career-filter-tabs {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 28px;
-}
-
-.col-symbol {
-  font-size: 1.3rem;
-}
-
-.resume-card {
+  flex-wrap: wrap;
+  gap: 8px;
   background: #ffffff;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-.resume-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-medium);
-}
-
-.resume-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.meta-date {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-.meta-badge {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 3px 10px;
+  padding: 6px;
   border-radius: var(--radius-full);
-  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xs);
+}
+
+.career-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-main);
+  font-size: 0.86rem;
+  font-weight: 700;
   color: var(--text-secondary);
-  border: 1px solid var(--border-light);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-.meta-badge-current {
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
+.career-tab-btn:hover {
+  color: var(--text-dark);
+  background: var(--bg-surface);
+}
+
+.career-tab-btn.active {
   background: var(--text-dark);
   color: #ffffff;
 }
 
-.resume-role {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 4px;
+.career-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
-.resume-company {
-  font-size: 0.94rem;
+.career-rect-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  position: relative;
+}
+
+.career-rect-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+.career-rect-card.hidden {
+  display: none !important;
+}
+
+/* Left Column: Side Meta */
+.career-side-meta {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-light);
+  padding-right: 28px;
+}
+
+.company-badge-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.company-brand {
+  font-family: var(--font-main);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.status-current-tag {
+  font-family: var(--font-main);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: var(--text-dark);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.status-tenure-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+}
+
+.meta-dates {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.meta-type {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* Right Column: Main Content */
+.career-main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.career-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.role-designation {
+  font-family: var(--font-main);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+.domain-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.role-overview {
+  font-size: 1.02rem;
   color: var(--text-secondary);
-  font-weight: 600;
+  line-height: 1.7;
   margin-bottom: 16px;
 }
 
-.resume-bullets {
+.role-key-bullets {
   list-style: none;
   padding-left: 0;
+  margin-bottom: 20px;
 }
 
-.resume-bullets li {
-  font-size: 0.92rem;
+.role-key-bullets li {
+  font-size: 0.94rem;
   color: var(--text-secondary);
   line-height: 1.65;
   position: relative;
@@ -1184,57 +1262,124 @@ code {
   margin-bottom: 10px;
 }
 
-.resume-bullets li::before {
+.role-key-bullets li::before {
   content: "•";
   position: absolute;
   left: 0;
   color: var(--text-dark);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   top: -1px;
 }
 
-.spotlight-resume-card {
-  border-color: var(--text-dark);
-  background: linear-gradient(135deg, #ffffff 0%, rgba(198, 246, 77, 0.15) 100%);
-}
-
-.badge-verified {
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  background: var(--lime);
+.role-key-bullets li strong {
   color: var(--text-dark);
+  font-weight: 700;
+}
+
+.role-skills-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+.pill-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  background: var(--bg-surface);
   border: 1px solid var(--border-light);
+  color: var(--text-secondary);
 }
 
-.cert-credential-id {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
+/* --------------------------------------------------------------------------
+   Education & Certifications Grid
+   -------------------------------------------------------------------------- */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
-.resume-note {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+.edu-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
-.resume-spec {
-  font-size: 0.9rem;
+.edu-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--text-dark);
+}
+
+.spotlight-edu-card {
+  border-color: var(--text-dark);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(198, 246, 77, 0.16) 100%);
+}
+
+.edu-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.badge-tenure {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.edu-title {
+  font-family: var(--font-main);
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.edu-institution {
+  font-size: 0.94rem;
   color: var(--text-secondary);
+  font-weight: 600;
   margin-bottom: 12px;
+}
+
+.edu-cred-id {
+  font-size: 0.86rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.edu-major {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
   font-weight: 500;
 }
 
-.athletic-tags {
+.edu-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.edu-activities {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.ath-tag {
+.act-tag {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 4px 10px;
@@ -1244,20 +1389,20 @@ code {
   color: var(--text-secondary);
 }
 
-.cert-compact-list {
+.cert-list {
   list-style: none;
   font-size: 0.88rem;
   color: var(--text-secondary);
 }
 
-.cert-compact-list li {
+.cert-list li {
   margin-bottom: 10px;
   padding-left: 18px;
   position: relative;
   line-height: 1.5;
 }
 
-.cert-compact-list li::before {
+.cert-list li::before {
   content: "✔";
   position: absolute;
   left: 0;
@@ -1293,9 +1438,9 @@ code {
 }
 
 .skill-box-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.18rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 16px;
 }
@@ -1355,7 +1500,7 @@ code {
 }
 
 .passion-num {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--text-dark);
@@ -1363,9 +1508,9 @@ code {
 }
 
 .passion-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
@@ -1406,7 +1551,7 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
-  background: var(--bg-surface);
+  background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 56px;
@@ -1422,7 +1567,7 @@ code {
 }
 
 .cta-headline {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 800;
   line-height: 1.2;
@@ -1448,7 +1593,7 @@ code {
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
 }
@@ -1478,18 +1623,17 @@ code {
 }
 
 /* Contact Form */
-.moonex-form {
-  background: #ffffff;
+.executive-form {
+  background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 36px;
-  box-shadow: var(--shadow-sm);
 }
 
 .form-heading {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 24px;
 }
@@ -1513,7 +1657,7 @@ code {
 .input-field textarea {
   width: 100%;
   padding: 13px 16px;
-  background: var(--bg-surface);
+  background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   color: var(--text-dark);
@@ -1527,7 +1671,6 @@ code {
 .input-field textarea:focus {
   outline: none;
   border-color: var(--text-dark);
-  background: #ffffff;
   box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
@@ -1570,7 +1713,7 @@ code {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-weight: 800;
   color: var(--text-dark);
   font-size: 1.1rem;
@@ -1613,7 +1756,7 @@ code {
     align-items: center;
   }
 
-  .hero-cta-wrapper, .hero-social-pills {
+  .hero-cta-wrapper, .hero-social-row {
     justify-content: center;
   }
 
@@ -1621,13 +1764,21 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .career-rect-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .career-side-meta {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding-right: 0;
+    padding-bottom: 18px;
+  }
+
   .contact-cta-banner {
     grid-template-columns: 1fr;
     padding: 36px;
-  }
-
-  .resume-split-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -1638,10 +1789,11 @@ code {
 
   .nav-links {
     position: fixed;
-    top: 76px;
+    top: 72px;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-light);
     flex-direction: column;
     padding: 28px;
@@ -1663,6 +1815,10 @@ code {
     display: flex;
   }
 
+  .career-rect-card {
+    padding: 24px;
+  }
+
   .service-row {
     grid-template-columns: 40px 1fr;
     gap: 16px;
@@ -1677,15 +1833,15 @@ code {
    Print Stylesheet for Executive CV Output
    -------------------------------------------------------------------------- */
 @media print {
-  body.moonex-light {
+  body.top-tier-light {
     background: #ffffff !important;
     color: #111827 !important;
     font-size: 10pt;
   }
 
   .site-header, .marquee-ticker-container, .hero-cta-wrapper,
-  .hero-social-pills, .hero-visual-block, .contact-section,
-  .site-footer, #passions {
+  .hero-social-row, .hero-visual-block, .contact-section,
+  .site-footer, #passions, .career-filter-tabs {
     display: none !important;
   }
 
@@ -1702,17 +1858,12 @@ code {
     padding: 16px 0 !important;
   }
 
-  .resume-card, .startup-card, .about-spec-card, .skill-box {
+  .career-rect-card, .startup-card, .about-spec-card, .skill-box, .edu-card {
     border: 1px solid #e5e7eb !important;
     background: #ffffff !important;
     page-break-inside: avoid;
     margin-bottom: 12px !important;
     padding: 14px !important;
     box-shadow: none !important;
-  }
-
-  .text-outline {
-    -webkit-text-stroke: none !important;
-    color: #111827 !important;
   }
 }
