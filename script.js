@@ -1,177 +1,112 @@
 /**
- * Marvin Andrew O. - Executive Portfolio Interactive Scripts
+ * Marvin Andrew O. — Moonex Freelancer Portfolio Interactive Scripts
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
   initMobileMenu();
-  initExperienceFilter();
+  initDownloadCv();
   initContactForm();
-  initClipboardHandlers();
-  initPrintCv();
-  initScrollSpy();
+  initHeaderScroll();
+  initServiceHover();
 });
-
-/**
- * Dark / Light Theme Toggle with LocalStorage Persistence
- */
-function initThemeToggle() {
-  const themeToggle = document.getElementById('themeToggle');
-  if (!themeToggle) return;
-
-  const savedTheme = localStorage.getItem('marvin-theme') || 'dark';
-  document.body.setAttribute('data-theme', savedTheme);
-
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('marvin-theme', newTheme);
-  });
-}
 
 /**
  * Mobile Navigation Drawer Toggle
  */
 function initMobileMenu() {
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-  if (!menuToggle || !navMenu) return;
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (!menuBtn || !navLinks) return;
 
-  menuToggle.addEventListener('click', () => {
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-    navMenu.classList.toggle('active');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
   });
 
-  // Close menu when clicking on any nav link
-  navMenu.querySelectorAll('.nav-link').forEach(link => {
+  navLinks.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('active');
     });
   });
 
-  // Close menu on click outside
   document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-      navMenu.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+    if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.classList.remove('active');
     }
   });
 }
 
 /**
- * Interactive Experience Timeline Filter
+ * Download / Print CV Trigger
  */
-function initExperienceFilter() {
-  const filterButtons = document.querySelectorAll('#experienceFilter .filter-btn');
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  if (!filterButtons.length || !timelineItems.length) return;
+function initDownloadCv() {
+  const downloadBtn = document.getElementById('downloadCvBtn');
+  if (!downloadBtn) return;
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterValue = btn.getAttribute('data-filter');
-
-      timelineItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
-        if (filterValue === 'all' || itemCategory === filterValue) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
-    });
-  });
-}
-
-/**
- * Copy to Clipboard Handlers
- */
-function initClipboardHandlers() {
-  const copyLinkedInBtn = document.getElementById('copyLinkedInBtn');
-  if (!copyLinkedInBtn) return;
-
-  copyLinkedInBtn.addEventListener('click', async () => {
-    const linkedInUrl = 'https://linkedin.com/in/marvin-andrew-o';
-    try {
-      await navigator.clipboard.writeText(linkedInUrl);
-      const originalTitle = copyLinkedInBtn.getAttribute('title') || 'Copy LinkedIn';
-      copyLinkedInBtn.setAttribute('title', 'Copied to clipboard!');
-      copyLinkedInBtn.style.background = 'var(--accent-emerald)';
-      copyLinkedInBtn.style.color = '#ffffff';
-
-      setTimeout(() => {
-        copyLinkedInBtn.setAttribute('title', originalTitle);
-        copyLinkedInBtn.style.background = '';
-        copyLinkedInBtn.style.color = '';
-      }, 2000);
-    } catch (err) {
-      console.error('Clipboard copy failed:', err);
-    }
-  });
-}
-
-/**
- * Print / Save PDF Trigger
- */
-function initPrintCv() {
-  const printCvBtn = document.getElementById('printCvBtn');
-  if (!printCvBtn) return;
-
-  printCvBtn.addEventListener('click', () => {
+  downloadBtn.addEventListener('click', () => {
     window.print();
   });
 }
 
 /**
- * Contact Form Submission with Mailto fallback
+ * Contact Form Handler with Direct Mailto Dispatch
  */
 function initContactForm() {
-  const form = document.getElementById('contactForm');
-  const statusDiv = document.getElementById('formStatus');
-  if (!form || !statusDiv) return;
+  const form = document.getElementById('moonexContactForm');
+  const feedback = document.getElementById('formFeedback');
+  if (!form || !feedback) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('senderName').value;
-    const email = document.getElementById('senderEmail').value;
-    const type = document.getElementById('inquiryType').value;
-    const message = document.getElementById('messageContent').value;
+    const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const topic = document.getElementById('topicInput').value;
+    const body = document.getElementById('bodyInput').value.trim();
 
-    const subject = encodeURIComponent(`Executive Inquiry: ${type} - from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nOpportunity Type: ${type}\n\nMessage:\n${message}`);
+    const subject = encodeURIComponent(`Executive Inquiry: ${topic} — from ${name}`);
+    const emailBody = encodeURIComponent(`Sender Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${body}`);
 
-    // Provide friendly confirmation
-    statusDiv.className = 'form-status success';
-    statusDiv.textContent = 'Opening your email client to dispatch this message directly to Marvin Andrew...';
-    statusDiv.style.display = 'block';
+    feedback.className = 'form-feedback success';
+    feedback.textContent = 'Launching your email client to deliver your message directly to Marvin Andrew...';
+    feedback.style.display = 'block';
 
-    // Direct mailto
     setTimeout(() => {
-      window.location.href = `mailto:marvinandrew.o@gmail.com?subject=${subject}&body=${body}`;
-    }, 600);
+      window.location.href = `mailto:marvinandrew.o@gmail.com?subject=${subject}&body=${emailBody}`;
+    }, 500);
   });
 }
 
 /**
- * Navbar blur and scrollspy
+ * Sticky Header elevation on scroll
  */
-function initScrollSpy() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
+function initHeaderScroll() {
+  const header = document.getElementById('header');
+  if (!header) return;
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
-      navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
-      navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25)';
+      header.style.backgroundColor = 'rgba(12, 13, 16, 0.95)';
+      header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+      header.style.borderBottomColor = 'rgba(255, 255, 255, 0.12)';
     } else {
-      navbar.style.boxShadow = 'none';
+      header.style.backgroundColor = 'rgba(12, 13, 16, 0.88)';
+      header.style.boxShadow = 'none';
+      header.style.borderBottomColor = 'rgba(255, 255, 255, 0.08)';
     }
+  });
+}
+
+/**
+ * Interactive Services Accordion / Rows
+ */
+function initServiceHover() {
+  const rows = document.querySelectorAll('.service-row');
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
 }
